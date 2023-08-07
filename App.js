@@ -1,10 +1,11 @@
 import React from 'react';
 import { SafeAreaView, Text } from 'react-native';
+import Home from './src/pages/Home';
 
 export default function App() {
   return (
     <SafeAreaView>
-      <Text>Alura Cursos!!</Text>
+      <Home/>
     </SafeAreaView>
   );
 }
