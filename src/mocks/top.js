@@ -1,6 +1,6 @@
-const topo = {
-    welcome: 'Olá, Bruno!',
+const top = {
+    welcome: 'Olá, Rafael!',
     subtitle: 'Encontre os melhores produtores',
 };
 
-export default topo;
+export default top;

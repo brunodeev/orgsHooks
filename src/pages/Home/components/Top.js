@@ -1,36 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 
 import { loadTop } from '../../../services/loadData';
 import logo from '../../../assets/logo.png';
 
-class Top extends React.Component{
+export default function Top() {
 
-    state = {
+    const [top, setTop] = useState({
         top: {
             welcome: '',
             subtitle: '',
-        },
-    };
+        }
+    });
+    
+    function updateTop(){
+        setTop(loadTop);
+    }
 
-    updateTop(){
-        const response = loadTop();
-        this.setState({top: response});
-    };
+    useEffect(() => {
+        updateTop();
+    }, []);
 
-    componentDidMount(){
-        this.updateTop();
-    };
-
-    render() {
-        return (
-            <View style={styles.top}>
-                <Image source={logo} style={styles.image}/>
-                <Text style={styles.welcome}>{this.state.top.welcome}</Text>
-                <Text style={styles.subtitle}>{this.state.top.subtitle}</Text>
-            </View>
-        );
-    };
+    return (
+        <View style={styles.top}>
+            <Image source={logo} style={styles.image}/>
+            <Text style={styles.welcome}>{top.welcome}</Text>
+            <Text style={styles.subtitle}>{top.subtitle}</Text>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
@@ -47,11 +44,11 @@ const styles = StyleSheet.create({
         fontSize: 26,
         lineHeight: 42,
         fontWeight: 'bold',
+        color: '#464646',
     },
     subtitle: {
         fontSize: 16,
         lineHeight: 26,
+        color: '#A3A3A3',
     },
 });
-
-export default Top;
