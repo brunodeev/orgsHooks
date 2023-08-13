@@ -7,20 +7,18 @@ import estrelaCinza from '../assets/estrelaCinza.png';
 
 export default function Stars({ quantity: oldQuantity, edit = false, big = false }){
 
+    const [quantity, setQuantity] = useState(oldQuantity);
     const styles = functionStyles(big);
 
-    const RenderStars = () => {
-
-        const [quantity, setQuantity] = useState(oldQuantity);
-
-        const starsList = [];
-
-        const getImage = (index) => {
-            if(index < quantity){
-                return estrela;
-            };
-            return estrelaCinza;
+    const getImage = (index) => {
+        if(index < quantity){
+            return estrela;
         };
+        return estrelaCinza;
+    };
+
+    const RenderStars = () => {
+        const starsList = [];
 
         for(let i = 0; i < 5; i++){
             starsList.push(
