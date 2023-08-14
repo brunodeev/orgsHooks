@@ -27,14 +27,14 @@ export default function Stars({ quantity: oldQuantity, edit = false, big = false
     };
 
     return (
-        <View style={styles.starsLine}>
+        <View style={styles.stars}>
             <RenderStars />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    starsLine: {
+    stars: {
         flexDirection: 'row',
     },
 });
