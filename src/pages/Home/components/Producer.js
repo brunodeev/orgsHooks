@@ -1,6 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useMemo } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Stars from '../../../components/Stars';
+
+const distanceInMetro = (distance) => {
+    return `${distance}m`;
+}
 
 export default function Producer({ name, image, distance, stars }){
 
@@ -8,6 +12,8 @@ export default function Producer({ name, image, distance, stars }){
         (selected) => !selected,
         false
     );
+
+    const distanceText = useMemo(() => distanceInMetro(distance), [distance]);
 
     return (
         <TouchableOpacity style={styles.container} onPress={invertSelected}>
@@ -21,7 +27,7 @@ export default function Producer({ name, image, distance, stars }){
                         big={selected}
                     />
                 </View>
-                <Text style={styles.distance}>{distance}</Text>
+                <Text style={styles.distance}>{distanceText}</Text>
             </View>
         </TouchableOpacity>
     );
